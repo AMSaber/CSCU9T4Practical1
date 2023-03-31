@@ -26,10 +26,26 @@ public class TrainingRecord {
        while (iter.hasNext()) {
           Entry current = iter.next();
           if (current.getDay()==d && current.getMonth()==m && current.getYear()==y) 
-             result = current.getEntry();
+              result = current.getEntry();
             }
        return result;
    } // lookupEntry
+   
+   //find all entries when given day, month and year
+    public String findAll (int d, int m, int y) {
+       ListIterator<Entry> iter = tr.listIterator();
+       String result = "";
+       while (iter.hasNext()) {
+          Entry current = iter.next();
+          if (current.getDay()==d && current.getMonth()==m && current.getYear()==y){ 
+             result += current.getEntry();
+          }
+          else{
+              result = "No entries found";
+          }
+       }
+       return result;
+   } // Step 2
    
    // Count the number of entries
    public int getNumberOfEntries(){
