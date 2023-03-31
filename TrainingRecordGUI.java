@@ -30,7 +30,10 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
     private JButton addR = new JButton("Add");
     private JButton lookUpByDate = new JButton("Look Up");
     
-    private JButton FindAllByDate = new JButton("Find All"); //Step 1
+    private JButton findAllByDate = new JButton("Find All"); //Step 1
+    private JButton swimEntry = new JButton("Swimming"); //Step 8
+    private JButton sprintEntry = new JButton("Sprinting"); //Step 8
+    private JButton cycleEntry = new JButton("Cycling"); //Step 8
 
     private TrainingRecord myAthletes = new TrainingRecord();
 
@@ -73,8 +76,15 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         add(lookUpByDate);
         lookUpByDate.addActionListener(this);
         
-        add(FindAllByDate); 
-        FindAllByDate.addActionListener(this); //Step 1
+        add(findAllByDate); 
+        findAllByDate.addActionListener(this); //Step 1
+        
+        add(swimEntry); 
+        swimEntry.addActionListener(this);
+        add(sprintEntry); 
+        sprintEntry.addActionListener(this);
+        add(cycleEntry); 
+        cycleEntry.addActionListener(this); //Step 8
         
         add(outputArea);
         outputArea.setEditable(false);
@@ -97,9 +107,19 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
             message = lookupEntry();
         }
         
-        if (event.getSource() == FindAllByDate){
-        message = findAll();
+        if (event.getSource() == findAllByDate){
+            message = findAll();
         } //Step 3
+        
+        if(event.getSource() == swimEntry){
+            message = "swim";
+        }
+        if(event.getSource() == sprintEntry){
+            message = "sprint";
+        }
+        if(event.getSource() == cycleEntry){
+            message = "cycle";
+        } //Step 8
         
         outputArea.setText(message);
         blankDisplay();
